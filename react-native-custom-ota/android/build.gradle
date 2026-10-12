@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    namespace "com.customota"
+    compileSdkVersion rootProject.hasProperty('compileSdkVersion') ? rootProject.compileSdkVersion : 34
+
+    defaultConfig {
+        minSdkVersion rootProject.hasProperty('minSdkVersion') ? rootProject.minSdkVersion : 23
+        targetSdkVersion rootProject.hasProperty('targetSdkVersion') ? rootProject.targetSdkVersion : 34
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation 'com.facebook.react:react-android'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+}

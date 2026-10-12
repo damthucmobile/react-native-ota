@@ -1,0 +1,13 @@
+{
+  "appId": "com.otademoapp",
+  "platform": "ios",
+  "otaVersion": "1.0.5",
+  "bundle": "main.jsbundle",
+  "sha256": "edc5896503c38b73624b7c9ab142a41b1f0968397361826c7f8646ea68dadb93",
+  "channel": "production",
+  "minNativeVersion": "1.0.0",
+  "mandatory": false,
+  "releaseNotes": "Nâng cấp tính năng phiên bản 1.0.5",
+  "createdAt": "2026-10-12T02:59:01.702Z",
+  "size": 221911
+}

@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["../OtaDemoApp/node_modules/*"]
+    },
+    "lib": ["es2020", "dom"],
+    "allowJs": true,
+    "jsx": "react",
+    "declaration": true,
+    "rootDir": "./src",
+    "declarationDir": "./lib/typescript",
+    "outDir": "./lib/commonjs",
+    "strict": true,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "ignoreDeprecations": "6.0"
+  },
+  "include": ["src/**/*"]
+}

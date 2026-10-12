@@ -1,0 +1,13 @@
+{
+  "appId": "custom-rn-demo",
+  "platform": "ios",
+  "otaVersion": "1.0.2",
+  "bundle": "main.jsbundle",
+  "sha256": "3d7c826fcfdb064946ede09a5ef8697b8e2970b1aeaab87487585916b791ca7a",
+  "channel": "production",
+  "minNativeVersion": "1.0.0",
+  "mandatory": false,
+  "releaseNotes": "Bản cập nhật v1.0.2 cực nhanh",
+  "createdAt": "2026-10-08T10:21:03.768Z",
+  "size": 219894
+}

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTA Console - Quản lý Đa Ứng dụng & Rollback</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="logo-icon">⚡</div>
+      <div>
+        <h1 class="logo-title">React Native Custom OTA Console</h1>
+        <p class="logo-subtitle">Hệ thống Quản lý Phiên bản & Rollback Đa Ứng Dụng (Multi-App)</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="badge badge-success">
+        <span class="status-dot"></span> Server Online (Port 4500)
+      </div>
+      <button id="btn-refresh" class="btn btn-secondary btn-sm" title="Làm mới dữ liệu">
+        🔄 Làm mới
+      </button>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <!-- App Selector Bar -->
+    <section class="app-selector-bar">
+      <div class="selector-left">
+        <span class="selector-label">📱 Ứng dụng đang chọn:</span>
+        <select id="select-active-app" class="app-select">
+          <option value="">Đang tải danh sách Apps...</option>
+        </select>
+        <span class="app-id-pill" id="current-app-id-badge">ID: --</span>
+      </div>
+      <div class="selector-actions">
+        <button id="btn-open-create-app" class="btn btn-primary btn-sm">
+          ➕ Thêm Ứng Dụng Mới
+        </button>
+        <button id="btn-delete-current-app" class="btn btn-danger-outline btn-sm" title="Xóa ứng dụng này">
+          🗑️ Xóa App
+        </button>
+      </div>
+    </section>
+
+    <!-- Stat Cards Overview -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Active iOS Version</div>
+        <div class="stat-value text-cyan" id="stat-ios-latest">--</div>
+        <div class="stat-sub" id="stat-ios-count">0 bản lưu trữ</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Active Android Version</div>
+        <div class="stat-value text-emerald" id="stat-android-latest">--</div>
+        <div class="stat-sub" id="stat-android-count">0 bản lưu trữ</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Dung lượng App này</div>
+        <div class="stat-value text-amber" id="stat-storage">--</div>
+        <div class="stat-sub" id="stat-storage-global">Toàn server: 0 B</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Tổng số Ứng dụng</div>
+        <div class="stat-value text-purple" id="stat-apps-count">1</div>
+        <div class="stat-sub" id="stat-backups">0 bản sao lưu</div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="ios">
+        <span class="tab-icon">🍎</span> iOS Releases
+      </button>
+      <button class="tab-btn" data-tab="android">
+        <span class="tab-icon">🤖</span> Android Releases
+      </button>
+      <button class="tab-btn" data-tab="apps">
+        <span class="tab-icon">📦</span> Quản lý Tất cả Apps
+      </button>
+      <button class="tab-btn" data-tab="backups">
+        <span class="tab-icon">💾</span> Backup & Snapshot Center
+      </button>
+    </nav>
+
+    <!-- Platform Releases Tab Content -->
+    <section id="tab-platform-content" class="tab-content active">
+      <!-- Active Banner & Instant Rollback Section -->
+      <div class="rollback-banner" id="rollback-banner">
+        <div class="rollback-info">
+          <div class="platform-badge" id="current-platform-name">iOS</div>
+          <div>
+            <h2 class="active-version-title">
+              Phiên bản đang phục vụ: <span class="highlight-version" id="current-active-version">--</span>
+            </h2>
+            <p class="active-version-desc">
+              Thiết bị thuộc app <strong id="banner-app-name">--</strong> khi Check OTA sẽ tự động tải phiên bản này.
+            </p>
+          </div>
+        </div>
+
+        <div class="rollback-controls">
+          <label for="rollback-select" class="form-label">Chọn bản để Rollback / Đổi Active:</label>
+          <div class="control-group">
+            <select id="rollback-select" class="form-select">
+              <option value="">Đang tải...</option>
+            </select>
+            <button id="btn-trigger-rollback" class="btn btn-warning">
+              ⏪ Chuyển sang bản này
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Release List Table Card -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Lịch sử các bản phát hành</h3>
+          <input type="text" id="filter-search" class="search-input" placeholder="🔍 Tìm version, ghi chú, SHA...">
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Phiên bản</th>
+                <th>Trạng thái</th>
+                <th>Native tối thiểu</th>
+                <th>Mã băm SHA-256</th>
+                <th>Kích thước</th>
+                <th>Ghi chú phát hành</th>
+                <th>Thời gian</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="releases-table-body">
+              <tr>
+                <td colspan="8" class="text-center text-muted py-4">Đang tải dữ liệu...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- All Apps Management Tab Content -->
+    <section id="tab-apps-content" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Danh sách các Ứng dụng trong Hệ thống</h3>
+            <p class="card-subtitle">Mỗi ứng dụng có không gian lưu trữ và chu kỳ phát hành hoàn toàn độc lập.</p>
+          </div>
+          <button id="btn-apps-tab-add" class="btn btn-primary btn-sm">
+            ➕ Thêm Ứng Dụng Mới
+          </button>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Mã ứng dụng (App ID)</th>
+                <th>Tên hiển thị</th>
+                <th>Active iOS</th>
+                <th>Active Android</th>
+                <th>Tổng Releases</th>
+                <th>Dung lượng</th>
+                <th>Ngày tạo</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="apps-table-body">
+              <tr>
+                <td colspan="8" class="text-center text-muted py-4">Đang tải danh sách apps...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Backups Tab Content -->
+    <section id="tab-backups-content" class="tab-content">
+      <div class="card mb-4">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Tạo điểm sao lưu mới (Snapshot)</h3>
+            <p class="card-subtitle">Sao lưu toàn bộ cấu hình phiên bản và siêu dữ liệu của các ứng dụng để dự phòng.</p>
+          </div>
+          <div class="control-group">
+            <input type="text" id="backup-tag-input" class="form-input" placeholder="Tên gợi nhớ (vd: truoc-khi-release)">
+            <button id="btn-create-backup" class="btn btn-primary">
+              💾 Lưu Snapshot
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Danh sách các bản sao lưu</h3>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>File sao lưu</th>
+                <th>Nhãn ghi chú</th>
+                <th>Phạm vi App</th>
+                <th>Kích thước</th>
+                <th>Thời gian tạo</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="backups-table-body">
+              <tr>
+                <td colspan="6" class="text-center text-muted py-4">Đang tải danh sách backup...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Create App -->
+  <div id="modal-create-app" class="modal-backdrop hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Thêm Ứng Dụng Mới</h3>
+        <button class="modal-close" id="modal-create-app-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="input-app-id">Mã ứng dụng (App ID) *</label>
+          <input type="text" id="input-app-id" class="form-input" placeholder="vd: com.company.rider hoặc my-delivery-app">
+          <p class="form-help">Chữ thường, số, dấu gạch ngang hoặc dấu chấm. Không có khoảng trắng.</p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="input-app-name">Tên hiển thị *</label>
+          <input type="text" id="input-app-name" class="form-input" placeholder="vd: Tài Xế Đối Tác">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="input-app-desc">Mô tả ngắn</label>
+          <textarea id="input-app-desc" class="form-input" rows="2" placeholder="Ghi chú về ứng dụng này..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="modal-create-app-btn-cancel">Hủy</button>
+        <button class="btn btn-primary" id="btn-submit-create-app">Tạo Ứng Dụng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal View Manifest -->
+  <div id="modal-manifest" class="modal-backdrop hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-manifest-title">Chi tiết manifest.json</h3>
+        <button class="modal-close" id="modal-manifest-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <pre><code id="modal-manifest-code" class="code-block"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="modal-manifest-btn-close">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

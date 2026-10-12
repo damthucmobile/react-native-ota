@@ -1,0 +1,134 @@
+{
+  "createdAt": "2026-10-09T04:44:43.445Z",
+  "tag": "auto-publish-ios-1.0.5",
+  "appId": "com.otademoapp",
+  "appsList": [
+    {
+      "id": "com.otademoapp",
+      "name": "OTA Demo App",
+      "description": "Ứng dụng Demo React Native Custom OTA",
+      "createdAt": "2026-10-09T02:22:59.398Z"
+    }
+  ],
+  "appsData": {
+    "com.otademoapp": {
+      "name": "OTA Demo App",
+      "versions": {
+        "android": {
+          "latest": "1.0.1"
+        },
+        "ios": {
+          "latest": "1.0.4"
+        }
+      },
+      "releases": {
+        "android": [
+          {
+            "version": "1.0.1",
+            "isLatest": true,
+            "manifest": {
+              "appId": "custom-rn-demo",
+              "platform": "android",
+              "otaVersion": "1.0.1",
+              "bundle": "index.android.bundle",
+              "sha256": "eb1324418e043aab847553bbac75e5af80d3b925826811858c978583f8bebc1c",
+              "channel": "production",
+              "minNativeVersion": "1.0.0",
+              "mandatory": false,
+              "releaseNotes": "OTA update",
+              "createdAt": "2026-10-08T09:46:59.351Z",
+              "size": 221095
+            }
+          }
+        ],
+        "ios": [
+          {
+            "version": "1.0.5",
+            "isLatest": false,
+            "manifest": {
+              "appId": "com.otademoapp",
+              "platform": "ios",
+              "otaVersion": "1.0.5",
+              "bundle": "main.jsbundle",
+              "sha256": "8fb70d2a98ea10de57c111c59ab7f596f7b9398394cf4595eb15f75322ab7f2c",
+              "channel": "production",
+              "minNativeVersion": "1.0.0",
+              "mandatory": false,
+              "releaseNotes": "Nâng cấp tính năng phiên bản 1.0.5",
+              "createdAt": "2026-10-09T04:44:43.306Z",
+              "size": 222103
+            }
+          },
+          {
+            "version": "1.0.4",
+            "isLatest": true,
+            "manifest": {
+              "appId": "custom-rn-demo",
+              "platform": "ios",
+              "otaVersion": "1.0.4",
+              "bundle": "main.jsbundle",
+              "sha256": "38721e30cbaa1f8a27e4bc921a6c0c913aa0e4a7a072b59b51a4cbccd1c4124e",
+              "channel": "production",
+              "minNativeVersion": "1.0.0",
+              "mandatory": false,
+              "releaseNotes": "Nâng cấp tính năng phiên bản 1.0.4",
+              "createdAt": "2026-10-09T02:10:15.261Z",
+              "size": 221840
+            }
+          },
+          {
+            "version": "1.0.3",
+            "isLatest": false,
+            "manifest": {
+              "appId": "custom-rn-demo",
+              "platform": "ios",
+              "otaVersion": "1.0.3",
+              "bundle": "main.jsbundle",
+              "sha256": "e400f7b6fa0cb6d67c25606f8635e63190d28f863bab237e636703552e39cb3c",
+              "channel": "production",
+              "minNativeVersion": "1.0.0",
+              "mandatory": false,
+              "releaseNotes": "Nâng cấp tính năng phiên bản 1.0.3",
+              "createdAt": "2026-10-08T10:31:12.154Z",
+              "size": 219903
+            }
+          },
+          {
+            "version": "1.0.2",
+            "isLatest": false,
+            "manifest": {
+              "appId": "custom-rn-demo",
+              "platform": "ios",
+              "otaVersion": "1.0.2",
+              "bundle": "main.jsbundle",
+              "sha256": "3d7c826fcfdb064946ede09a5ef8697b8e2970b1aeaab87487585916b791ca7a",
+              "channel": "production",
+              "minNativeVersion": "1.0.0",
+              "mandatory": false,
+              "releaseNotes": "Bản cập nhật v1.0.2 cực nhanh",
+              "createdAt": "2026-10-08T10:21:03.768Z",
+              "size": 219894
+            }
+          },
+          {
+            "version": "1.0.1",
+            "isLatest": false,
+            "manifest": {
+              "appId": "custom-rn-demo",
+              "platform": "ios",
+              "otaVersion": "1.0.1",
+              "bundle": "main.jsbundle",
+              "sha256": "b64413142a238b88e70a14d68c5fbf8d01570d4f70e9dcd1aa313a08733a244b",
+              "channel": "production",
+              "minNativeVersion": "1.0.0",
+              "mandatory": false,
+              "releaseNotes": "OTA update",
+              "createdAt": "2026-10-08T10:12:12.040Z",
+              "size": 219865
+            }
+          }
+        ]
+      }
+    }
+  }
+}

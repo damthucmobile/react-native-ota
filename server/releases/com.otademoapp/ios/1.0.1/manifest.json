@@ -1,0 +1,13 @@
+{
+  "appId": "custom-rn-demo",
+  "platform": "ios",
+  "otaVersion": "1.0.1",
+  "bundle": "main.jsbundle",
+  "sha256": "b64413142a238b88e70a14d68c5fbf8d01570d4f70e9dcd1aa313a08733a244b",
+  "channel": "production",
+  "minNativeVersion": "1.0.0",
+  "mandatory": false,
+  "releaseNotes": "OTA update",
+  "createdAt": "2026-10-08T10:12:12.040Z",
+  "size": 219865
+}
