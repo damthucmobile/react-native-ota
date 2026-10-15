@@ -1,9 +1,14 @@
 import { CustomOTAManager } from "./manager";
 import { withCustomOTA } from "./hoc";
+import { useCustomOTA } from "./useCustomOTA";
 export * from "./types";
 export * from "./manager";
 export * from "./hoc";
 export * from "./storage";
+export * from "./ProgressModal";
+export * from "./useCustomOTA";
+export * from "./downloader";
+export * from "./assetResolver";
 declare const CustomOTA: {
     sync: typeof CustomOTAManager.sync;
     checkForUpdate: typeof CustomOTAManager.checkForUpdate;
@@ -11,6 +16,11 @@ declare const CustomOTA: {
     restartApp: typeof CustomOTAManager.restartApp;
     getUpdateMetadata: typeof CustomOTAManager.getUpdateMetadata;
     markReady: typeof CustomOTAManager.markReady;
+    notifyAppReady: typeof CustomOTAManager.notifyAppReady;
+    addProgressListener: typeof CustomOTAManager.addProgressListener;
+    addDetailedStatusListener: typeof CustomOTAManager.addDetailedStatusListener;
     wrap: typeof withCustomOTA;
+    ProgressModal: import("@types/react").FC<import("./ProgressModal").OTAProgressModalProps>;
+    useCustomOTA: typeof useCustomOTA;
 };
 export default CustomOTA;

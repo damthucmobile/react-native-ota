@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.InstallMode = exports.CheckFrequency = exports.SyncStatus = void 0;
+exports.InstallMode = exports.CheckFrequency = exports.DetailedStatus = exports.SyncStatus = void 0;
 var SyncStatus;
 (function (SyncStatus) {
     SyncStatus[SyncStatus["UP_TO_DATE"] = 0] = "UP_TO_DATE";
@@ -10,6 +10,17 @@ var SyncStatus;
     SyncStatus[SyncStatus["UPDATE_INSTALLED"] = 4] = "UPDATE_INSTALLED";
     SyncStatus[SyncStatus["ERROR"] = -1] = "ERROR";
 })(SyncStatus || (exports.SyncStatus = SyncStatus = {}));
+var DetailedStatus;
+(function (DetailedStatus) {
+    DetailedStatus["IDLE"] = "IDLE";
+    DetailedStatus["CHECKING"] = "CHECKING";
+    DetailedStatus["UPDATE_AVAILABLE"] = "UPDATE_AVAILABLE";
+    DetailedStatus["DOWNLOADING"] = "DOWNLOADING";
+    DetailedStatus["VERIFYING"] = "VERIFYING";
+    DetailedStatus["INSTALLING"] = "INSTALLING";
+    DetailedStatus["COMPLETED"] = "COMPLETED";
+    DetailedStatus["ERROR"] = "ERROR";
+})(DetailedStatus || (exports.DetailedStatus = DetailedStatus = {}));
 var CheckFrequency;
 (function (CheckFrequency) {
     CheckFrequency["ON_APP_START"] = "ON_APP_START";

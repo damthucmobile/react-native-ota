@@ -3,7 +3,6 @@
     "target": "es2020",
     "module": "commonjs",
     "moduleResolution": "node",
-    "baseUrl": ".",
     "paths": {
       "*": ["../OtaDemoApp/node_modules/*"]
     },
@@ -18,8 +17,7 @@
     "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "ignoreDeprecations": "6.0"
+    "skipLibCheck": true
   },
   "include": ["src/**/*"]
 }

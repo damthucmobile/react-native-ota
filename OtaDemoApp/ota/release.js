@@ -3,19 +3,23 @@
 const { execSync } = require("child_process");
 const path = require("path");
 
-const platformArg = process.argv[2];
-const version = process.argv[3];
-const releaseNotes = process.argv.slice(4).join(" ") || "Bản cập nhật OTA";
+const isBrokenAssets = process.argv.includes("--broken-assets");
+const filteredArgs = process.argv.slice(2).filter(arg => arg !== "--broken-assets");
+
+const platformArg = filteredArgs[0];
+const version = filteredArgs[1];
+const releaseNotes = filteredArgs.slice(2).join(" ") || "Bản cập nhật OTA";
 
 if (!platformArg || !version) {
   console.log(`
 \x1b[33m⚡ CÁCH DÙNG:\x1b[0m
-  yarn ota \x1b[36m<platform>\x1b[0m \x1b[32m<version>\x1b[0m [ghi chú]
+  yarn ota \x1b[36m<platform>\x1b[0m \x1b[32m<version>\x1b[0m [ghi chú] [--broken-assets]
 
 \x1b[33m📌 VÍ DỤ:\x1b[0m
   yarn ota ios 1.0.2
   yarn ota android 1.0.2
   yarn ota all 1.0.2 "Sửa màu giao diện và tối ưu hiệu năng"
+  yarn ota android 1.0.2 --broken-assets   \x1b[31m(Mô phỏng lỗi mất ảnh để test)\x1b[0m
 `);
   process.exit(1);
 }
@@ -31,10 +35,12 @@ for (const p of platforms) {
 
 const rootDir = path.resolve(__dirname, "..");
 const serverUrl = process.env.OTA_SERVER || "http://localhost:4500";
+const apiKey = process.env.OTA_API_KEY || "ota_push_live_ae843ed1410b89580e192bb601e238c3e0c5f3e87b0eb1b2";
 
 console.log("\x1b[35m====================================================\x1b[0m");
 console.log(`🚀 BẮT ĐẦU ĐÓNG GÓI & PHÁT HÀNH OTA: \x1b[1m${version}\x1b[0m`);
 console.log(`📡 OTA Server: \x1b[36m${serverUrl}\x1b[0m`);
+console.log(`🔑 Push API Key: \x1b[33m${apiKey.substring(0, 16)}...\x1b[0m`);
 console.log(`📝 Ghi chú: ${releaseNotes}`);
 console.log("\x1b[35m====================================================\x1b[0m");
 
@@ -48,7 +54,8 @@ for (const p of platforms) {
       stdio: "inherit",
       env: {
         ...process.env,
-        RELEASE_NOTES: releaseNotes
+        RELEASE_NOTES: releaseNotes,
+        TEST_BROKEN_ASSETS: isBrokenAssets ? "true" : (process.env.TEST_BROKEN_ASSETS || "false")
       }
     });
 
@@ -64,7 +71,8 @@ for (const p of platforms) {
       stdio: "inherit",
       env: {
         ...process.env,
-        OTA_SERVER: serverUrl
+        OTA_SERVER: serverUrl,
+        OTA_API_KEY: apiKey
       }
     });
 

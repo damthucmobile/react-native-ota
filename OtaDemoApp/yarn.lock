@@ -2712,7 +2712,7 @@ __metadata:
     prettier: 2.8.8
     react: 19.2.3
     react-native: 0.87.1
-    react-native-custom-ota: "link:../react-native-custom-ota"
+    react-native-custom-ota: ^1.1.1
     react-native-fs: ^2.20.0
     react-native-safe-area-context: ^5.5.2
     react-test-renderer: 19.2.3
@@ -7496,11 +7496,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-custom-ota@link:../react-native-custom-ota::locator=OtaDemoApp%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "react-native-custom-ota@link:../react-native-custom-ota::locator=OtaDemoApp%40workspace%3A."
+"react-native-custom-ota@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "react-native-custom-ota@npm:1.1.1"
+  dependencies:
+    react-native-fs: ^2.20.0
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  bin:
+    custom-ota: bin/custom-ota.js
+  checksum: 904abdc1639467584e9581a03d432f60166209a67a2b237562f6e980fc230724d64eaadd762bbfa8fb0f073bedd97ad6d12af54331fba5fa3088809518d0704a
   languageName: node
-  linkType: soft
+  linkType: hard
 
 "react-native-fs@npm:^2.20.0":
   version: 2.20.0

@@ -14,6 +14,7 @@ export async function readState() {
         return {
             currentVersion: "0.0.0",
             previousVersion: null,
+            nativeVersion: "0.0.0",
             pending: false,
             ready: true,
             failedVersions: []
@@ -27,6 +28,7 @@ export async function readState() {
         return {
             currentVersion: "0.0.0",
             previousVersion: null,
+            nativeVersion: "0.0.0",
             pending: false,
             ready: true,
             failedVersions: []

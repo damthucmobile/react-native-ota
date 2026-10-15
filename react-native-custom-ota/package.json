@@ -1,6 +1,6 @@
 {
   "name": "react-native-custom-ota",
-  "version": "1.0.0",
+  "version": "1.1.6",
   "description": "Self-hosted OTA (Over-The-Air) update library for React Native with automatic rollback, similar to react-native-code-push",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -8,12 +8,13 @@
   "react-native": "src/index.ts",
   "source": "src/index.ts",
   "bin": {
-    "custom-ota": "./bin/custom-ota.js"
+    "custom-ota": "bin/custom-ota.js"
   },
   "files": [
     "src",
     "lib",
-    "android",
+    "android/src",
+    "android/build.gradle",
     "ios",
     "bin",
     "react-native.config.js",
@@ -40,6 +41,7 @@
     "react-native": "*"
   },
   "dependencies": {
+    "archiver": "^7.0.1",
     "react-native-fs": "^2.20.0"
   },
   "devDependencies": {

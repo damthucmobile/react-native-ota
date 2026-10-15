@@ -1,0 +1,22 @@
+{
+  "appId": "com.otademoapp",
+  "platform": "android",
+  "otaVersion": "1.0.99",
+  "bundle": "index.android.bundle",
+  "bundleSha256": "cbd950262fcc96cc8ed50a53760f2b0456835954b8420ec4cfcc14a9482786d9",
+  "bundleHash": "cbd950262fcc96cc8ed50a53760f2b0456835954b8420ec4cfcc14a9482786d9",
+  "sha256": "bc85020d443c2c9a77fa969cee5e099077a5f2d2688e2a7baa73126c760e7bac",
+  "assets": [
+    "drawable-mdpi/src_assets_avatartest.png",
+    "drawable-mdpi/src_assets_otatestimage.png",
+    "raw/keep.xml"
+  ],
+  "channel": "production",
+  "targetBinaryVersion": "*",
+  "minNativeVersion": "1.0.0",
+  "mandatory": false,
+  "releaseNotes": "Test dry run",
+  "createdAt": "2026-10-15T04:26:07.100Z",
+  "size": 1579461,
+  "zipSha256": "bc85020d443c2c9a77fa969cee5e099077a5f2d2688e2a7baa73126c760e7bac"
+}

@@ -8,6 +8,8 @@ const platform = process.argv[2];
 const otaVersion = process.argv[3];
 const serverUrl =
   process.env.OTA_SERVER || "http://localhost:4500";
+const apiKey =
+  process.env.OTA_API_KEY || "ota_push_live_ae843ed1410b89580e192bb601e238c3e0c5f3e87b0eb1b2";
 
 if (!platform || !otaVersion) {
   console.error(
@@ -81,6 +83,7 @@ const req = client.request(
     headers: {
       "Content-Type": "application/json",
       "Content-Length": payload.length,
+      "X-OTA-API-KEY": apiKey,
       "X-OTA-ADMIN-TOKEN":
         process.env.OTA_ADMIN_TOKEN || "demo-secret"
     }

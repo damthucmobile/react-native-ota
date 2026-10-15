@@ -33,7 +33,24 @@ const bundleFile =
     : "main.jsbundle";
 
 const bundlePath = path.join(outDir, bundleFile);
-const assetsDir = path.join(outDir, "assets");
+
+// QUY TẮC ĐÓNG GÓI ASSETS TRONG REACT NATIVE OTA:
+// - Android: Metro xuất drawables vào <assets-dest>/drawable-xxx/
+// - iOS: Metro xuất assets vào <assets-dest>/assets/...
+// Khi nạp bundle từ file system (file://), AssetSourceResolver tìm kiếm assets cùng cấp với bundle.
+// Nếu truyền outDir/assets thì trên Android biến thành assets/drawable-xxx (bị MẤT ẢNH!)
+// Mặc định đặt assetsDir = outDir để ảnh được đặt chuẩn ngay cạnh bundle.
+const testBrokenAssets =
+  process.env.TEST_BROKEN_ASSETS === "true" ||
+  process.argv.includes("--broken-assets");
+
+const assetsDir = testBrokenAssets ? path.join(outDir, "assets") : outDir;
+
+if (testBrokenAssets) {
+  console.log("⚠️ [CHẾ ĐỘ GIẢ LẬP LỖI] Đang build với thư mục assets phụ (sẽ làm mất ảnh để test)!");
+} else {
+  console.log("✅ [CHẾ ĐỘ CHUẨN] Assets được đóng gói cùng cấp với JSBundle (--assets-dest outDir).");
+}
 
 const command = [
   "npx react-native bundle",

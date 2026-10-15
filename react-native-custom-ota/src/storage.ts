@@ -19,6 +19,7 @@ export async function readState(): Promise<LocalPackage> {
     return {
       currentVersion: "0.0.0",
       previousVersion: null,
+      nativeVersion: "0.0.0",
       pending: false,
       ready: true,
       failedVersions: []
@@ -32,6 +33,7 @@ export async function readState(): Promise<LocalPackage> {
     return {
       currentVersion: "0.0.0",
       previousVersion: null,
+      nativeVersion: "0.0.0",
       pending: false,
       ready: true,
       failedVersions: []
