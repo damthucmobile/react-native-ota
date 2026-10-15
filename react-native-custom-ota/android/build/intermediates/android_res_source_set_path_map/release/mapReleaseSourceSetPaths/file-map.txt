@@ -1,0 +1,9 @@
+com.customota.react-native-custom-ota-pngs-0 /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/generated/res/pngs/release
+com.customota.react-native-custom-ota-updated_navigation_xml-1 /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/generated/updated_navigation_xml/release
+com.customota.react-native-custom-ota-mergeReleaseResources-2 /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/intermediates/incremental/release/mergeReleaseResources/merged.dir
+com.customota.react-native-custom-ota-mergeReleaseResources-3 /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+com.customota.react-native-custom-ota-release-4 /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/intermediates/merged_res/release/mergeReleaseResources
+com.customota.react-native-custom-ota-release-5 /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/intermediates/packaged_res/release/packageReleaseResources
+com.customota.react-native-custom-ota-main-6 /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/src/main/res
+com.customota.react-native-custom-ota-release-7 /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/src/release/res
+gradleHome-0 /Users/vtit/.gradle

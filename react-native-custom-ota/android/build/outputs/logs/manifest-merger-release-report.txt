@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest11296273081550894936.xml:2:13-83
+INJECTED from /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest11296273081550894936.xml:2:13-83
+	package
+		INJECTED from /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest11296273081550894936.xml
+	xmlns:android
+		ADDED from /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest11296273081550894936.xml:2:23-81
+uses-sdk
+INJECTED from /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest11296273081550894936.xml reason: use-sdk injection requested
+INJECTED from /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest11296273081550894936.xml
+INJECTED from /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest11296273081550894936.xml
+	android:targetSdkVersion
+		INJECTED from /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest11296273081550894936.xml
+	android:minSdkVersion
+		INJECTED from /Users/vtit/Downloads/custom-ota-rn-demo/OtaDemoApp/node_modules/react-native-custom-ota/android/build/intermediates/tmp/ProcessLibraryManifest/release/tempAndroidManifest11296273081550894936.xml
